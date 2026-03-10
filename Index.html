@@ -10,29 +10,54 @@
 
 *{
 box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 body{
-margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#1a1a2e,#16213e);
+background:#000;
 color:white;
 text-align:center;
 overflow:hidden;
 }
+
+/* sao rơi */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:fall linear infinite;
+opacity:0.7;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10px);
+opacity:0;
+}
+10%{opacity:1;}
+100%{
+transform:translateY(100vh);
+opacity:0;
+}
+}
+
+/* trang */
 
 .page{
 width:100%;
 min-height:100vh;
 display:none;
 padding:40px 20px;
-display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 }
 
-.active{
+.page.active{
 display:flex;
 }
 
@@ -45,15 +70,13 @@ height:auto;
 .group{
 width:200px;
 max-width:60vw;
-height:auto;
-border:5px solid #00eaff;
+border:4px solid #00eaff;
 }
 
 .avatar{
 width:150px;
 max-width:40vw;
-height:auto;
-border:4px solid white;
+border:3px solid white;
 }
 
 .members{
@@ -67,7 +90,6 @@ flex-wrap:wrap;
 
 .text{
 max-width:700px;
-width:100%;
 margin-top:30px;
 line-height:1.7;
 font-size:18px;
@@ -81,55 +103,39 @@ border-radius:20px;
 background:#00eaff;
 font-size:16px;
 cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
 background:#00c8d6;
+transform:scale(1.05);
 }
 
-/* Tablet */
+/* responsive */
 
 @media (max-width:768px){
 
-.group{
-width:160px;
-}
+.group{width:160px;}
 
-.avatar{
-width:120px;
-}
+.avatar{width:120px;}
 
 .text{
 font-size:16px;
 padding:0 10px;
 }
 
-.members{
-gap:30px;
-}
-
-button{
-font-size:14px;
-padding:10px 20px;
-}
+.members{gap:30px;}
 
 }
-
-/* Điện thoại nhỏ */
 
 @media (max-width:480px){
 
-.group{
-width:140px;
-}
+.group{width:140px;}
 
-.avatar{
-width:100px;
-}
+.avatar{width:100px;}
 
 .text{
 font-size:15px;
-line-height:1.6;
 }
 
 h1{
@@ -143,7 +149,22 @@ font-size:22px;
 
 <body>
 
+<!-- sao -->
+
+<script>
+for(let i=0;i<80;i++){
+let star=document.createElement("div")
+star.className="star"
+star.style.left=Math.random()*100+"vw"
+star.style.animationDuration=(Math.random()*5+5)+"s"
+star.style.opacity=Math.random()
+document.body.appendChild(star)
+}
+</script>
+
+
 <!-- TRANG 1 -->
+
 <div class="page active">
 
 <h1>Nhà BFC</h1>
@@ -174,6 +195,7 @@ những câu chuyện vui buồn trong cuộc sống.
 
 
 <!-- TRANG 2 -->
+
 <div class="page">
 
 <h1>Ông Địa (Hiếu)</h1>
@@ -204,6 +226,7 @@ BFC vẫn luôn là một nơi rất đặc biệt.
 
 
 <!-- TRANG 3 -->
+
 <div class="page">
 
 <h1>Idol An Ngọc Huyền</h1>
@@ -234,6 +257,7 @@ và đạt được những điều mình mong muốn.
 
 
 <!-- TRANG 4 -->
+
 <div class="page">
 
 <h1>Tạm Biệt BFC</h1>
@@ -277,10 +301,17 @@ let page=0
 let pages=document.querySelectorAll(".page")
 
 function nextPage(){
+
 pages[page].classList.remove("active")
+
 page++
-if(page>=pages.length) page=pages.length-1
+
+if(page>=pages.length){
+page=pages.length-1
+}
+
 pages[page].classList.add("active")
+
 }
 
 </script>
