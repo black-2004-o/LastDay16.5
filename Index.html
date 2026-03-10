@@ -111,8 +111,6 @@ background:#00c8d6;
 transform:scale(1.05);
 }
 
-/* responsive */
-
 @media (max-width:768px){
 
 .group{width:160px;}
@@ -148,8 +146,6 @@ font-size:22px;
 </head>
 
 <body>
-
-<!-- sao -->
 
 <script>
 for(let i=0;i<80;i++){
@@ -247,7 +243,18 @@ và chính những mảnh ghép đó
 Dù sau này mỗi người sẽ có con đường riêng,  
 em vẫn mong rằng tất cả mọi người  
 sẽ luôn vui vẻ, bình an  
-và đạt được những điều mình mong muốn.
+và đạt được những điều mình mong muốn.<br><br>
+
+Khoảng thời gian ở BFC  
+có thể không quá dài  
+nhưng chắc chắn sẽ là một kỷ niệm  
+mà em sẽ luôn trân trọng.<br><br>
+
+Hy vọng rằng dù sau này mỗi người  
+đi trên một con đường khác nhau  
+thì tất cả mọi người  
+vẫn sẽ luôn nhớ về khoảng thời gian  
+chúng ta đã từng ở chung một nơi.
 
 </div>
 
@@ -272,6 +279,8 @@ và đạt được những điều mình mong muốn.
 <div>
 <img src="z7607848025244_ce9da5bf69e2fad7afee4f98626c7e01.jpg" class="avatar">
 <p>An Ngọc Huyền</p>
+</div>
+
 </div>
 
 <div class="text">
@@ -320,9 +329,11 @@ chúng ta đã từng có một khoảng thời gian rất đẹp
 <b>Tạm biệt BFC – một phần ký ức đẹp mà tụi mình sẽ luôn nhớ.</b>
 
 </div>
-</div>
 
 <button onclick="prevPage()">← Quay lại</button>
+
+</div>
+
 
 <script>
 
@@ -332,11 +343,23 @@ let pages=document.querySelectorAll(".page")
 function nextPage(){
 
 pages[page].classList.remove("active")
-
 page++
 
 if(page>=pages.length){
 page=pages.length-1
+}
+
+pages[page].classList.add("active")
+
+}
+
+function prevPage(){
+
+pages[page].classList.remove("active")
+page--
+
+if(page<0){
+page=0
 }
 
 pages[page].classList.add("active")
