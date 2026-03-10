@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lời Tạm Biệt BFC</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#1a1a2e,#16213e);
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+.page{
+width:100%;
+min-height:100vh;
+display:none;
+padding:40px 20px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.active{
+display:flex;
+}
+
+img{
+border-radius:50%;
+max-width:100%;
+height:auto;
+}
+
+.group{
+width:200px;
+max-width:60vw;
+height:auto;
+border:5px solid #00eaff;
+}
+
+.avatar{
+width:150px;
+max-width:40vw;
+height:auto;
+border:4px solid white;
+}
+
+.members{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:60px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.text{
+max-width:700px;
+width:100%;
+margin-top:30px;
+line-height:1.7;
+font-size:18px;
+}
+
+button{
+margin-top:40px;
+padding:12px 25px;
+border:none;
+border-radius:20px;
+background:#00eaff;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#00c8d6;
+}
+
+/* Tablet */
+
+@media (max-width:768px){
+
+.group{
+width:160px;
+}
+
+.avatar{
+width:120px;
+}
+
+.text{
+font-size:16px;
+padding:0 10px;
+}
+
+.members{
+gap:30px;
+}
+
+button{
+font-size:14px;
+padding:10px 20px;
+}
+
+}
+
+/* Điện thoại nhỏ */
+
+@media (max-width:480px){
+
+.group{
+width:140px;
+}
+
+.avatar{
+width:100px;
+}
+
+.text{
+font-size:15px;
+line-height:1.6;
+}
+
+h1{
+font-size:22px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TRANG 1 -->
+<div class="page active">
+
+<h1>Nhà BFC</h1>
+
+<img src="z7447911524425_ed7097b172383ec8066fa324ed4f5b31.jpg" class="group">
+
+<div class="text">
+
+Ngày 16/05 là ngày mà tôi chính thức nói lời tạm biệt với nhà BFC.  
+8 tháng tuy không phải là khoảng thời gian quá dài,  
+nhưng với tôi đó là một hành trình đầy kỷ niệm.<br><br>
+
+Cảm ơn tất cả mọi người trong BFC vì đã từng chấp nhận tôi,  
+đã cùng tôi trò chuyện, cười đùa  
+và tạo nên những khoảnh khắc mà có lẽ sau này  
+tôi sẽ rất khó quên.<br><br>
+
+BFC không chỉ là một nhóm,  
+mà đối với tôi đó giống như một gia đình nhỏ  
+nơi mà mọi người từng cùng nhau chia sẻ  
+những câu chuyện vui buồn trong cuộc sống.
+
+</div>
+
+<button onclick="nextPage()">Tiếp →</button>
+
+</div>
+
+
+<!-- TRANG 2 -->
+<div class="page">
+
+<h1>Ông Địa (Hiếu)</h1>
+
+<img src="z7607848026086_73f1b0241b2deeac220453257d4ff58a.jpg" class="avatar">
+
+<div class="text">
+
+Thật lòng mà nói, khi phải rời đi  
+tôi cũng có rất nhiều cảm xúc khó nói thành lời.<br><br>
+
+Khoảng thời gian ở BFC  
+đã cho tôi gặp được rất nhiều người tốt,  
+và có những kỷ niệm mà tôi tin rằng  
+sau này khi nhớ lại  
+tôi vẫn sẽ mỉm cười.<br><br>
+
+Dù sau này mỗi người sẽ có con đường riêng,  
+có thể chúng ta sẽ ít nói chuyện hơn,  
+nhưng trong ký ức của tôi  
+BFC vẫn luôn là một nơi rất đặc biệt.
+
+</div>
+
+<button onclick="nextPage()">Tiếp →</button>
+
+</div>
+
+
+<!-- TRANG 3 -->
+<div class="page">
+
+<h1>Idol An Ngọc Huyền</h1>
+
+<img src="z7607852828612_af490cf9e7ebb6edfe9e09739cb641eb.jpg" class="avatar">
+
+<div class="text">
+
+Cảm ơn tất cả mọi người trong BFC  
+vì đã từng cùng nhau tạo nên  
+một khoảng thời gian thật đẹp.<br><br>
+
+Mỗi người trong nhóm đều là  
+một mảnh ghép đặc biệt,  
+và chính những mảnh ghép đó  
+đã tạo nên một gia đình nhỏ đáng nhớ.<br><br>
+
+Dù sau này mỗi người sẽ có con đường riêng,  
+em vẫn mong rằng tất cả mọi người  
+sẽ luôn vui vẻ, bình an  
+và đạt được những điều mình mong muốn.
+
+</div>
+
+<button onclick="nextPage()">Tiếp →</button>
+
+</div>
+
+
+<!-- TRANG 4 -->
+<div class="page">
+
+<h1>Tạm Biệt BFC</h1>
+
+<div class="members">
+
+<div>
+<img src="z7607848667776_e7f25a753bef20fba1a2acda3af7a589.jpg" class="avatar">
+<p>Hiếu</p>
+</div>
+
+<div>
+<img src="z7607848025244_ce9da5bf69e2fad7afee4f98626c7e01.jpg" class="avatar">
+<p>An Ngọc Huyền</p>
+</div>
+
+</div>
+
+<div class="text">
+
+Cảm ơn tất cả mọi người  
+vì đã từng xuất hiện trong hành trình này.<br><br>
+
+Có thể sau này chúng ta sẽ không còn gặp nhau thường xuyên,  
+nhưng những kỷ niệm trong BFC  
+sẽ luôn là một phần ký ức đẹp.<br><br>
+
+Chúc tất cả mọi người luôn mạnh khỏe,  
+hạnh phúc và thành công trên con đường của mình.<br><br>
+
+<b>Tạm biệt nhà BFC.</b>
+
+</div>
+
+</div>
+
+
+<script>
+
+let page=0
+let pages=document.querySelectorAll(".page")
+
+function nextPage(){
+pages[page].classList.remove("active")
+page++
+if(page>=pages.length) page=pages.length-1
+pages[page].classList.add("active")
+}
+
+</script>
+
+</body>
+</html>
