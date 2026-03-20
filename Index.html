@@ -209,8 +209,7 @@ font-size:14px;
 
 <body>
 
-<!-- NHẠC AUTO CHUẨN -->
-<audio id="bgMusic" autoplay loop muted>
+<audio id="bgMusic" loop>
 <source src="nhaclastday.mp3" type="audio/mpeg">
 </audio>
 
@@ -219,14 +218,13 @@ window.addEventListener("load", function(){
 
 let audio = document.getElementById("bgMusic")
 
-// phát luôn (muted nên không bị chặn)
+// click lần đầu để phát nhạc (fix Chrome + Netlify)
+document.body.addEventListener("click", function(){
 audio.play().catch(()=>{})
+},{ once:true })
 
-// sau 1s bật tiếng lại
-setTimeout(()=>{
-audio.muted = false
+// âm lượng nhẹ cho đỡ giật
 audio.volume = 0.7
-},1000)
 
 })
 </script>
@@ -377,7 +375,7 @@ chúng ta đã từng ở chung một nơi.
 <div class="members">
 
 <div>
-<img src="z7607848667776_e7f25a753bef20fba1a2acda3af7a589.jpg" class="avatar">
+<img src="z7638688501525_468be081dbae9b851b8eacf41bac7125.jpg" class="avatar">
 <p>Hiếu</p>
 </div>
 
