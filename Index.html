@@ -498,5 +498,36 @@ pages[page].classList.add("active")
 
 </script>
 
+<script>
+
+// fix riêng cho nút quay lại ở TRANG 5
+document.addEventListener("DOMContentLoaded", function(){
+
+let backBtn = document.querySelectorAll(".page")[4].querySelector("button")
+
+backBtn.addEventListener("click", function(){
+
+let pages = document.querySelectorAll(".page")
+
+// reset trang hiện tại (trang 5)
+pages[4].classList.remove("active")
+
+// ép về trang 1
+page = 0
+
+// reset hiệu ứng cho mượt
+pages[0].style.opacity="0"
+pages[0].style.transform="translateX(-40px)"
+
+setTimeout(()=>{
+pages[0].classList.add("active")
+},50)
+
+})
+
+})
+
+</script>
+
 </body>
 </html>
