@@ -298,7 +298,7 @@ nhưng chính những điều nhỏ như vậy
 lại trở thành những kỷ niệm khiến anh nhớ nhất.<br><br>
 
 anh thật sự rất trân trọng  
-khoảng thời gian mình đã từng ở trong Bfancy002,  
+khoảng thời gian mình đã từng ở trong Bfancy,  
 vì nhờ có mọi người  
 mà những ngày bình thường  
 đã trở nên vui vẻ và ý nghĩa hơn rất nhiều.<br><br>
@@ -446,7 +446,7 @@ chúng ta đã từng có một khoảng thời gian rất đẹp
 <p style="margin-top:20px;opacity:0.7;">
 Một tấm ảnh kỹ niệm của toàn thể thành viên Bfancy đáng nhớ💙
 </p>
-<button onclick="goHome()"> Quay lại</button>
+<button>Kết thúc</button>
 
 </div>
 
@@ -457,6 +457,9 @@ let page=0
 let pages=document.querySelectorAll(".page")
 
 function nextPage(){
+
+// 🔥 THÊM DÒNG NÀY
+if(page === pages.length - 1) return;
 
 pages[page].style.opacity="0"
 pages[page].style.transform="translateX(-40px)"
