@@ -315,7 +315,7 @@ mà chắc chắn anh sẽ không bao giờ quên.<br><br>
 Dù sau này có ra sao,  
 anh vẫn sẽ luôn nhớ rằng  
 đã từng có một khoảng thời gian  
-mình là một phần của nhà Bfancy002.
+mình là một phần của nhà Bfancy.
 
 </div>
 
@@ -481,11 +481,15 @@ pages[page].style.transform="translateX(40px)"
 
 setTimeout(()=>{
 pages[page].classList.remove("active")
-page--
 
-if(page<0){
-page=0
+// 🔥 THÊM ĐOẠN NÀY
+if(page === pages.length - 1){
+page = 0
+}else{
+page--
 }
+
+// 🔥 HẾT
 
 pages[page].classList.add("active")
 },300)
