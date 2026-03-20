@@ -71,10 +71,19 @@ align-items:center;
 
 max-width:900px;
 margin:auto;
+
+/* hiệu ứng mượt thêm vào */
+opacity:0;
+transform:translateX(40px);
+transition:0.5s ease;
 }
 
 .page.active{
 display:flex;
+
+/* hiệu ứng mượt */
+opacity:1;
+transform:translateX(0);
 }
 
 img{
@@ -199,6 +208,18 @@ font-size:14px;
 </head>
 
 <body>
+
+<!-- NHẠC THÊM VÀO -->
+<audio id="bgMusic" autoplay loop>
+<source src="Nhạc Chill Không Lời - Những Bài Hát Tiktok Nghe Khi Overthinking - Nhạc Lofi Chill Nhẹ Nhàng 2025 - Gió Thu Chill_1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// fix autoplay
+document.addEventListener("click", function(){
+document.getElementById("bgMusic").play()
+},{ once:true })
+</script>
 
 <script>
 for(let i=0;i<80;i++){
@@ -416,6 +437,10 @@ let pages=document.querySelectorAll(".page")
 
 function nextPage(){
 
+pages[page].style.opacity="0"
+pages[page].style.transform="translateX(-40px)"
+
+setTimeout(()=>{
 pages[page].classList.remove("active")
 page++
 
@@ -424,11 +449,16 @@ page=pages.length-1
 }
 
 pages[page].classList.add("active")
+},300)
 
 }
 
 function prevPage(){
 
+pages[page].style.opacity="0"
+pages[page].style.transform="translateX(40px)"
+
+setTimeout(()=>{
 pages[page].classList.remove("active")
 page--
 
@@ -437,6 +467,7 @@ page=0
 }
 
 pages[page].classList.add("active")
+},300)
 
 }
 
