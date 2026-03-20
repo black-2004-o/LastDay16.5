@@ -210,15 +210,24 @@ font-size:14px;
 <body>
 
 <!-- NHẠC THÊM VÀO -->
-<audio id="bgMusic" autoplay loop>
-<source src="Nhạc Chill Không Lời - Những Bài Hát Tiktok Nghe Khi Overthinking - Nhạc Lofi Chill Nhẹ Nhàng 2025 - Gió Thu Chill_1.mp3" type="audio/mpeg">
+<audio id="bgMusic" loop>
+<source src="nhaclastday.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// fix autoplay
-document.addEventListener("click", function(){
-document.getElementById("bgMusic").play()
+window.addEventListener("load", function(){
+
+let audio = document.getElementById("bgMusic")
+
+// click lần đầu để phát nhạc (fix Chrome + Netlify)
+document.body.addEventListener("click", function(){
+audio.play().catch(()=>{})
 },{ once:true })
+
+// âm lượng nhẹ cho đỡ giật
+audio.volume = 0.7
+
+})
 </script>
 
 <script>
