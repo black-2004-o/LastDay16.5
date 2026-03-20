@@ -446,7 +446,7 @@ chúng ta đã từng có một khoảng thời gian rất đẹp
 <p style="margin-top:20px;opacity:0.7;">
 Một tấm ảnh kỹ niệm của toàn thể thành viên Bfancy đáng nhớ💙
 </p>
-<button onclick="prevPage()"> Quay lại</button>
+<button onclick="goHome()"> Quay lại</button>
 
 </div>
 
@@ -500,34 +500,33 @@ pages[page].classList.add("active")
 
 <script>
 
-// fix riêng cho nút quay lại ở TRANG 5
-document.addEventListener("DOMContentLoaded", function(){
+function goHome(){
 
-let backBtn = document.querySelectorAll(".page")[4].querySelector("button")
-
-backBtn.addEventListener("click", function(){
-
-let pages = document.querySelectorAll(".page")
-
-// reset trang hiện tại (trang 5)
-pages[4].classList.remove("active")
-
-// ép về trang 1
-page = 0
-
-// reset hiệu ứng cho mượt
-pages[0].style.opacity="0"
-pages[0].style.transform="translateX(-40px)"
+// ẩn trang hiện tại (trang 5)
+pages[page].style.opacity="0"
+pages[page].style.transform="translateX(40px)"
 
 setTimeout(()=>{
-pages[0].classList.add("active")
+
+pages[page].classList.remove("active")
+
+// về trang 1
+page = 0
+
+// reset hiệu ứng cho trang 1
+pages[page].style.opacity="0"
+pages[page].style.transform="translateX(-40px)"
+
+setTimeout(()=>{
+pages[page].classList.add("active")
 },50)
 
-})
+},300)
 
-})
+}
 
 </script>
+
 
 </body>
 </html>
