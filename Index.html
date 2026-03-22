@@ -277,15 +277,15 @@ to{ transform:translateY(0); }
 
 @keyframes openFlap{
 0%{
-transform:translateY(0);
-opacity:1;
+transform:rotateX(0deg);
+}
+40%{
+transform:rotateX(120deg);
 }
 100%{
-transform:translateY(-60%);
-opacity:0.9;
+transform:rotateX(180deg);
 }
 }
-
 @keyframes closeFlap{
 0%{
 transform:translateY(-60%);
