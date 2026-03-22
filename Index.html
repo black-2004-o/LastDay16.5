@@ -680,6 +680,7 @@ pages[page].classList.add("active")
 
 </body>
 <script>
+
 // bắt sự kiện nút "Kết thúc"
 document.addEventListener("DOMContentLoaded", ()=>{
 
@@ -704,25 +705,26 @@ Chúc bạn luôn vui vẻ và bình an trên hành trình phía trước.
 // hiện thư
 box.style.display="flex"
 box.style.opacity="1"
+box.classList.remove("close") // 🔥 reset
 
 let flap = box.querySelector(".flap")
 let content = box.querySelector(".content")
 
-// reset animation
+// reset animation CHUẨN
 flap.style.animation = "none"
-content.style.opacity = "0"
-content.style.transform = "translateY(20px)"
+content.style.animation = "none"
 
 flap.offsetHeight
+content.offsetHeight
 
-// mở nắp thư
 flap.style.animation = "openFlap 1s ease forwards"
 
-// 🔥 HIỆN NỘI DUNG THƯ
+// 🔥 đóng thư (fix mobile)
 setTimeout(()=>{
-content.style.opacity = "1"
-content.style.transform = "translateY(0)"
-},800)
+box.classList.remove("close")
+void box.offsetWidth
+box.classList.add("close")
+},1500)
 
 // hiện THE END
 setTimeout(()=>{
