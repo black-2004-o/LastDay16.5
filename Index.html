@@ -228,6 +228,10 @@ border-radius:10px;
 overflow:hidden;
 transform:translateY(100vh);
 animation:flyUp 1s ease forwards;
+
+/* 🔥 FIX MOBILE */
+perspective:1000px;
+transform-style:preserve-3d;
 }
 
 .flap{
@@ -239,6 +243,12 @@ height:100%;
 background:#00eaff;
 clip-path:polygon(0 0,100% 0,50% 60%);
 transform-origin:top;
+
+/* 🔥 FIX MOBILE */
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+transform-style:preserve-3d;
+
 animation:openFlap 1s ease forwards;
 animation-delay:1s;
 }
@@ -271,28 +281,9 @@ to{ transform:rotateX(180deg); }
 to{ opacity:1; }
 }
 
-/* ===== THE END ===== */
-
-#theEnd{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:50px;
-letter-spacing:6px;
-color:white;
-opacity:0;
-z-index:10; /* ✅ giảm xuống */
-transition:1s;
-}
-
-#theEnd.show{
-opacity:1;
-}
-
-/* đóng nắp thư */
+/* 🔥 FIX ĐÓNG NẮP */
 .close .flap{
-animation:closeFlap 1s ease forwards;
+animation:closeFlap 0.8s ease forwards !important;
 }
 
 @keyframes closeFlap{
@@ -698,42 +689,41 @@ let end = document.getElementById("theEnd")
 let text = document.getElementById("letterText")
 
 // đổi nội dung thư
-setTimeout(()=>{
 text.innerHTML = `
 <p>
 Cảm ơn vì đã dành thời gian đọc ❤️<br><br>
 Chúc bạn luôn vui vẻ và bình an trên hành trình phía trước.
 </p>
 `
-},200)
 
 // hiện thư
 box.style.display="flex"
 box.style.opacity="1"
-// reset animation
+box.classList.remove("close") // 🔥 reset
+
 let flap = box.querySelector(".flap")
 let content = box.querySelector(".content")
 
+// 🔥 RESET ANIMATION CHUẨN MOBILE
 flap.style.animation = "none"
 content.style.animation = "none"
 
-flap.offsetHeight
-content.offsetHeight
+void flap.offsetWidth
+void content.offsetWidth
 
+// mở thư lại
 flap.style.animation = "openFlap 1s ease forwards"
 content.style.animation = "showText 1s ease forwards"
 
-// đóng thư
+// 🔥 đóng thư (fix mobile)
 setTimeout(()=>{
 box.classList.add("close")
-// ẩn chữ trong thư để không bị chồng
-text.style.opacity = "0"
 },1500)
 
-// 👉 ĐỢI ĐÓNG XONG HẲN HIỆN
+// hiện THE END
 setTimeout(()=>{
 end.classList.add("show")
-},3200) // tăng lên
+},2600)
 
 })
 }
