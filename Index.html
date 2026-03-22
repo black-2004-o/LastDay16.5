@@ -242,12 +242,15 @@ width:100%;
 height:100%;
 background:#00eaff;
 clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
 
-/* ❌ bỏ rotateX */
-transform:none;
+/* 🔥 FIX MOBILE */
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+transform:rotateX(0deg);
 
-/* animation mở */
-animation:openFlap 0.8s ease forwards;
+/* mở */
+animation:openFlap 1s ease forwards;
 animation-delay:1s;
 }
 
@@ -258,13 +261,14 @@ height:100%;
 padding:20px;
 font-size:15px;
 color:#000;
-opacity:0;
 text-align:center;
 line-height:1.6;
 background:#fff;
-z-index:2;
-animation:showText 1s ease forwards;
-animation-delay:1.5s;
+z-index:3;
+
+/* 🔥 FIX */
+opacity:1;
+animation:none;
 }
 
 @keyframes flyUp{
@@ -277,21 +281,21 @@ transform:translateY(0);
 opacity:1;
 }
 100%{
-transform:translateY(-120%);
-opacity:0;
+transform:translateY(-60%);
+opacity:0.9;
 }
 }
 
 @keyframes closeFlap{
 0%{
-transform:translateY(-120%);
-opacity:0;
+transform:translateY(-60%);
+opacity:0.9;
 }
 100%{
 transform:translateY(0);
 opacity:1;
 }
-} 
+}
 
 </style>
 </head>
@@ -706,16 +710,14 @@ box.classList.remove("close") // 🔥 reset
 let flap = box.querySelector(".flap")
 let content = box.querySelector(".content")
 
-// 🔥 RESET ANIMATION CHUẨN MOBILE
+// reset animation CHUẨN
 flap.style.animation = "none"
 content.style.animation = "none"
 
-void flap.offsetWidth
-void content.offsetWidth
+flap.offsetHeight
+content.offsetHeight
 
-// mở thư lại
 flap.style.animation = "openFlap 1s ease forwards"
-content.style.animation = "showText 1s ease forwards"
 
 // 🔥 đóng thư (fix mobile)
 setTimeout(()=>{
