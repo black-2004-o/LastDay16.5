@@ -304,14 +304,14 @@ to{ transform:rotateX(0deg); }
 <div id="letterBox">
     <div class="letter">
         <div class="flap"></div>
-        <div class="content">
-            <p>
-                Gửi Bfancy ❤️<br><br>
-                Trước khi mọi thứ bắt đầu...<br>
-                hãy dành vài giây nhìn lại hành trình này.<br><br>
-                Cảm ơn vì đã xuất hiện 💙
-            </p>
-        </div>
+       <div class="content" id="letterText">
+    <p>
+        Gửi Bfancy ❤️<br><br>
+        Trước khi mọi thứ bắt đầu...<br>
+        hãy dành vài giây nhìn lại hành trình này.<br><br>
+        Cảm ơn vì đã xuất hiện 💙
+    </p>
+</div>
     </div>
 </div>
 
@@ -691,34 +691,31 @@ btn.addEventListener("click", ()=>{
 
 let box = document.getElementById("letterBox")
 let end = document.getElementById("theEnd")
+let text = document.getElementById("letterText")
+
+// đổi nội dung thư
+setTimeout(()=>{
+text.innerHTML = `
+<p>
+Cảm ơn vì đã dành thời gian đọc ❤️<br><br>
+Chúc bạn luôn vui vẻ và bình an trên hành trình phía trước.
+</p>
+`
+},200)
 
 // hiện lại thư
 box.style.display="flex"
 box.style.opacity="1"
 
-// ===== RESET TOÀN BỘ ANIMATION =====
-let flap = box.querySelector(".flap")
-let content = box.querySelector(".content")
-
-// reset flap
-flap.style.animation = "none"
-flap.offsetHeight
-flap.style.animation = "openFlap 1s ease forwards"
-
-// reset content
-content.style.animation = "none"
-content.offsetHeight
-content.style.animation = "showText 1s ease forwards"
-
-// ===== ĐÓNG THƯ =====
+// đóng nắp
 setTimeout(()=>{
 box.classList.add("close")
-},1000)
+},200)
 
-// ===== HIỆN THE END =====
+// hiện THE END
 setTimeout(()=>{
 end.classList.add("show")
-},2000)
+},1200)
 
 })
 }
