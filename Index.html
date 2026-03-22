@@ -242,14 +242,12 @@ width:100%;
 height:100%;
 background:#00eaff;
 clip-path:polygon(0 0,100% 0,50% 60%);
-transform-origin:top;
 
-/* 🔥 FIX MOBILE */
-backface-visibility:hidden;
--webkit-backface-visibility:hidden;
-transform-style:preserve-3d;
+/* ❌ bỏ rotateX */
+transform:none;
 
-animation:openFlap 1s ease forwards;
+/* animation mở */
+animation:openFlap 0.8s ease forwards;
 animation-delay:1s;
 }
 
@@ -274,22 +272,26 @@ to{ transform:translateY(0); }
 }
 
 @keyframes openFlap{
-to{ transform:rotateX(180deg); }
+0%{
+transform:translateY(0);
+opacity:1;
 }
-
-@keyframes showText{
-to{ opacity:1; }
+100%{
+transform:translateY(-120%);
+opacity:0;
 }
-
-/* 🔥 FIX ĐÓNG NẮP */
-.close .flap{
-animation:closeFlap 0.8s ease forwards !important;
 }
 
 @keyframes closeFlap{
-from{ transform:rotateX(180deg); }
-to{ transform:rotateX(0deg); }
+0%{
+transform:translateY(-120%);
+opacity:0;
 }
+100%{
+transform:translateY(0);
+opacity:1;
+}
+} 
 
 </style>
 </head>
@@ -717,6 +719,8 @@ content.style.animation = "showText 1s ease forwards"
 
 // 🔥 đóng thư (fix mobile)
 setTimeout(()=>{
+box.classList.remove("close")
+void box.offsetWidth
 box.classList.add("close")
 },1500)
 
