@@ -698,15 +698,29 @@ let end = document.getElementById("theEnd")
 box.style.display="flex"
 box.style.opacity="1"
 
-// đóng nắp
+// ===== RESET TOÀN BỘ ANIMATION =====
+let flap = box.querySelector(".flap")
+let content = box.querySelector(".content")
+
+// reset flap
+flap.style.animation = "none"
+flap.offsetHeight
+flap.style.animation = "openFlap 1s ease forwards"
+
+// reset content
+content.style.animation = "none"
+content.offsetHeight
+content.style.animation = "showText 1s ease forwards"
+
+// ===== ĐÓNG THƯ =====
 setTimeout(()=>{
 box.classList.add("close")
-},200)
+},1000)
 
-// hiện THE END
+// ===== HIỆN THE END =====
 setTimeout(()=>{
 end.classList.add("show")
-},1200)
+},2000)
 
 })
 }
