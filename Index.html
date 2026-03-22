@@ -204,10 +204,87 @@ font-size:14px;
 
 }
 
+/* ===== PHONG BÌ ===== */
+
+#letterBox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.letter{
+position:relative;
+width:260px;
+height:170px;
+background:#fff;
+border-radius:10px;
+overflow:hidden;
+transform:translateY(100vh);
+animation:flyUp 1s ease forwards;
+}
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#00eaff;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+animation:openFlap 1s ease forwards;
+animation-delay:1s;
+}
+
+.content{
+position:absolute;
+width:100%;
+height:100%;
+padding:20px;
+font-size:14px;
+color:#000;
+opacity:0;
+animation:showText 1s ease forwards;
+animation-delay:1.5s;
+}
+
+@keyframes flyUp{
+to{ transform:translateY(0); }
+}
+
+@keyframes openFlap{
+to{ transform:rotateX(180deg); }
+}
+
+@keyframes showText{
+to{ opacity:1; }
+}
+
 </style>
 </head>
 
 <body>
+    <!-- PHONG BÌ THƯ -->
+<div id="letterBox">
+    <div class="letter">
+        <div class="flap"></div>
+        <div class="content">
+            <p>
+                Gửi Bfancy ❤️<br><br>
+                Trước khi mọi thứ bắt đầu...<br>
+                hãy dành vài giây nhìn lại hành trình này.<br><br>
+                Cảm ơn vì đã xuất hiện 💙
+            </p>
+        </div>
+    </div>
+</div>
 
 <audio id="bgMusic" loop>
 <source src="nhaclastday.mp3" type="audio/mpeg">
@@ -218,13 +295,24 @@ window.addEventListener("load", function(){
 
 let audio = document.getElementById("bgMusic")
 
-// click lần đầu để phát nhạc (fix Chrome + Netlify)
+// click lần đầu để phát nhạc
 document.body.addEventListener("click", function(){
 audio.play().catch(()=>{})
 },{ once:true })
 
-// âm lượng nhẹ cho đỡ giật
 audio.volume = 0.7
+
+// 🔥 TỰ ẨN LÁ THƯ SAU 4 GIÂY
+setTimeout(()=>{
+let box = document.getElementById("letterBox")
+if(box){
+box.style.opacity="0"
+box.style.transition="0.6s"
+setTimeout(()=>{
+box.style.display="none"
+},600)
+}
+},4000)
 
 })
 </script>
@@ -370,7 +458,7 @@ chúng ta đã từng ở chung một nơi.
 
 <div class="page">
 
-<h1>Tạm Biệt Bfancy002</h1>
+<h1>Tạm Biệt Bfancy</h1>
 
 <div class="members">
 
