@@ -282,7 +282,7 @@ font-size:50px;
 letter-spacing:6px;
 color:white;
 opacity:0;
-z-index:10000;
+z-index:10; /* ✅ giảm xuống */
 transition:1s;
 }
 
@@ -723,15 +723,17 @@ content.offsetHeight
 flap.style.animation = "openFlap 1s ease forwards"
 content.style.animation = "showText 1s ease forwards"
 
-// 👉 sau khi mở xong thì đóng lại
+// đóng thư
 setTimeout(()=>{
 box.classList.add("close")
+// ẩn chữ trong thư để không bị chồng
+text.style.opacity = "0"
 },1500)
 
-// 👉 sau khi đóng xong thì hiện THE END
+// 👉 ĐỢI ĐÓNG XONG HẲN HIỆN
 setTimeout(()=>{
 end.classList.add("show")
-},2500)
+},3200) // tăng lên
 
 })
 }
