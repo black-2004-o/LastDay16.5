@@ -267,6 +267,35 @@ to{ transform:rotateX(180deg); }
 to{ opacity:1; }
 }
 
+/* ===== THE END ===== */
+
+#theEnd{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:50px;
+letter-spacing:6px;
+color:white;
+opacity:0;
+z-index:10000;
+transition:1s;
+}
+
+#theEnd.show{
+opacity:1;
+}
+
+/* đóng nắp thư */
+.close .flap{
+animation:closeFlap 1s ease forwards;
+}
+
+@keyframes closeFlap{
+from{ transform:rotateX(180deg); }
+to{ transform:rotateX(0deg); }
+}
+
 </style>
 </head>
 
@@ -286,6 +315,10 @@ to{ opacity:1; }
     </div>
 </div>
 
+<!-- 🔥 DÁN Ở ĐÂY -->
+<div id="theEnd">THE END</div>
+
+<audio id="bgMusic" loop>
 <audio id="bgMusic" loop>
 <source src="nhaclastday.mp3" type="audio/mpeg">
 </audio>
@@ -645,6 +678,43 @@ pages[page].classList.add("active")
 
 </script>
 
+
+</body>
+<script>
+
+// bắt sự kiện nút "Kết thúc"
+document.addEventListener("DOMContentLoaded", ()=>{
+
+let btns = document.querySelectorAll("button")
+
+btns.forEach(btn=>{
+if(btn.innerText.trim() === "Kết thúc"){
+btn.addEventListener("click", ()=>{
+
+let box = document.getElementById("letterBox")
+let end = document.getElementById("theEnd")
+
+// hiện lại thư
+box.style.display="flex"
+box.style.opacity="1"
+
+// đóng nắp
+setTimeout(()=>{
+box.classList.add("close")
+},200)
+
+// hiện THE END
+setTimeout(()=>{
+end.classList.add("show")
+},1200)
+
+})
+}
+})
+
+})
+
+</script>
 
 </body>
 </html>
