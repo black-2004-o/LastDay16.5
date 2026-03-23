@@ -204,9 +204,9 @@ font-size:14px;
 
 }
 
-/* ===== PHONG BÌ ===== */
+/* ===== PHONG BÌ MỚI ===== */
 
-#letterBox{
+#introLetter{
 position:fixed;
 top:0;
 left:0;
@@ -214,24 +214,23 @@ width:100%;
 height:100%;
 background:rgba(0,0,0,0.95);
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 z-index:9999;
 }
 
-.letter{
+.envelope{
 position:relative;
 width:260px;
 height:170px;
-background:#fff;
+background:white;
 border-radius:10px;
 overflow:hidden;
-transform:translateY(100vh);
-animation:flyUp 1s ease forwards;
 
-/* 🔥 FIX MOBILE */
-perspective:1000px;
-transform-style:preserve-3d;
+transform:translateY(120px);
+opacity:0;
+
+animation:letterAppear 1s ease forwards;
 }
 
 .flap{
@@ -241,77 +240,70 @@ left:0;
 width:100%;
 height:100%;
 background:#00eaff;
+
 clip-path:polygon(0 0,100% 0,50% 60%);
+
 transform-origin:top;
 
-/* 🔥 FIX MOBILE */
-backface-visibility:hidden;
--webkit-backface-visibility:hidden;
-transform:rotateX(0deg);
-
-/* mở */
-animation:openFlap 10s ease forwards;
+animation:flapOpen 1.2s ease forwards;
 animation-delay:1s;
 }
 
-.content{
+.paper{
 position:absolute;
 width:100%;
 height:100%;
 padding:20px;
-font-size:15px;
-color:#000;
 text-align:center;
+color:black;
 line-height:1.6;
-background:#fff;
-z-index:2;
 
-/* 🔥 FIX CHUẨN */
-opacity:1;
-transform:translateY(20px);
-transition:0.6s ease;
-}
-@keyframes flyUp{
-to{ transform:translateY(0); }
+transform:translateY(40px);
+opacity:0;
+
+animation:paperShow 1s ease forwards;
+animation-delay:1.6s;
 }
 
-@keyframes openFlap{
-0%{
-transform:rotateX(0deg);
-}
-40%{
-transform:rotateX(120deg);
-}
-100%{
-transform:rotateX(180deg);
-}
-}
-@keyframes closeFlap{
-0%{
-transform:translateY(-60%);
-opacity:0.9;
-}
-100%{
+@keyframes letterAppear{
+to{
 transform:translateY(0);
 opacity:1;
 }
 }
 
+@keyframes flapOpen{
+to{
+transform:rotateX(180deg);
+}
+}
+
+@keyframes paperShow{
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
 </style>
 </head>
 
-<body>
-    <!-- PHONG BÌ THƯ -->
-<div id="letterBox">
-    <div class="letter">
-        <div class="flap"></div>
-       <div class="content" id="letterText">
-    <p>
-        Gửi Bfancy ❤️<br><br>
-        Trước khi mọi thứ bắt đầu...<br>
-        hãy dành vài giây nhìn lại hành trình này.<br><br>
-        Cảm ơn vì đã xuất hiện 💙
-    </p>
+<body><div id="introLetter">
+
+<div class="envelope">
+
+<div class="flap"></div>
+
+<div class="paper">
+<p>
+Gửi Bfancy ❤️<br><br>
+Trước khi mọi thứ bắt đầu...<br>
+hãy dành vài giây nhìn lại hành trình này.<br><br>
+Cảm ơn vì đã xuất hiện 💙
+</p>
+</div>
+
+</div>
+
 </div>
     </div>
 </div>
