@@ -326,17 +326,28 @@ audio.play().catch(()=>{})
 
 audio.volume = 0.7
 
-// 🔥 TỰ ẨN LÁ THƯ SAU 4 GIÂY
+// 🔥 ẨN LÁ THƯ SAU 5 GIÂY
 setTimeout(()=>{
-let box = document.getElementById("letterBox")
-if(box){
-box.style.opacity="0"
-box.style.transition="0.6s"
+
+let letter = document.getElementById("introLetter")
+
+if(letter){
+
+letter.style.opacity="0"
+letter.style.transition="0.8s"
+
 setTimeout(()=>{
-box.style.display="none"
-},600)
+letter.style.display="none"
+
+// 🔥 HIỆN TRANG 1
+let firstPage = document.querySelector(".page")
+firstPage.classList.add("active")
+
+},800)
+
 }
-},6000)
+
+},5000)
 
 })
 </script>
