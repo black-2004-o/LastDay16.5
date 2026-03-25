@@ -740,51 +740,26 @@ let btns = document.querySelectorAll("button")
 
 btns.forEach(btn=>{
 if(btn.innerText.trim() === "Kết thúc"){
+
 btn.addEventListener("click", ()=>{
 
-let box = document.getElementById("letterBox")
 let end = document.getElementById("finishScreen")
-let text = document.getElementById("letterText")
 
-// đổi nội dung thư
-text.innerHTML = `
-<p>
-Cảm ơn vì đã dành thời gian đọc ❤️<br><br>
-Chúc bạn luôn vui vẻ và bình an trên hành trình phía trước.
-</p>
-`
+// ẩn trang hiện tại
+pages[page].style.opacity="0"
 
-// hiện thư
-box.style.display="flex"
-box.style.opacity="1"
-box.classList.remove("close") // 🔥 reset
-
-let flap = box.querySelector(".flap")
-let content = box.querySelector(".content")
-
-// reset animation CHUẨN
-flap.style.animation = "none"
-content.style.animation = "none"
-
-flap.offsetHeight
-content.offsetHeight
-
-flap.style.animation = "openFlap 1s ease forwards"
-
-// 🔥 đóng thư (fix mobile)
 setTimeout(()=>{
-box.classList.remove("close")
-void box.offsetWidth
-box.classList.add("close")
-},1500)
+pages[page].classList.remove("active")
 
-// hiện THE END
-setTimeout(()=>{
+// hiện màn hình kết thúc
 end.classList.add("show")
-},2600)
+
+},500)
 
 })
+
 }
+
 })
 
 })
